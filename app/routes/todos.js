@@ -63,9 +63,9 @@ router.post('/update', (req, res, next)=> {
 });
 
 router.get('/', (req, res, next)=> {
-    Todos.find({}, (err, todos)=> {
+    Todos.find({}).sort({createdAt: -1}).exec((err, todos)=> {
         if (err) next(err);
-        else res.json({todos});
+        else res.json(todos);
     })
 });
 
